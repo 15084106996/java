@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.neuedu.mapper.CategoryMapper">
+    <insert id="addCategory">
+        insert into category
+        values (default,#{parentId},#{cname})
+    </insert>
+    <delete id="multiDelCategory">
+        delete from category
+        where id in
+        <foreach collection="ids" item="id" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </delete>
+    <update id="updateCategory">
+        update category
+        set cname = #{cname}
+        where id = #{id}
+    </update>
+    <select id="getCategories" resultType="org.neuedu.model.Category">
+        select *
+        from category
+        where cname like concat('%',#{cname},'%') and parentid is not null
+    </select>
+    <select id="getAllCategories" resultType="org.neuedu.model.Category">
+        select *
+        from category
+        <where>
+            <if test="value != null">
+                parentId = #{value}
+            </if>
+        </where>
+    </select>
+
+    <select id="getAllCategories2" resultMap="BaseResultMap">
+        select a.id as id,a.parentid as apid,a.cname as acname,b.id as bid,b.parentid as bpid,b.cname as bcname
+        from category a
+        join category b
+        on b.parentid = a.id
+    </select>
+    <resultMap id="BaseResultMap" type="org.neuedu.model.Category">
+        <id column="id" property="id"></id>
+        <result column="apid" property="parentId"></result>
+        <result column="acname" property="cname"></result>
+        <collection property="child" ofType="org.neuedu.model.Category">
+            <id column="bid" property="id"></id>
+            <result column="bpid" property="parentId"></result>
+            <result column="bcname" property="cname"></result>
+        </collection>
+    </resultMap>
+
+
+    <select id="getAllCategories3" resultMap="BaseResultMap2">
+        select *
+        from category
+        where parentid is null
+    </select>
+    <resultMap id="BaseResultMap2" type="org.neuedu.model.Category">
+        <id column="id" property="id"></id>
+        <result column="parentid" property="parentId"></result>
+        <result column="cname" property="cname"></result>
+        <collection property="child" ofType="org.neuedu.model.Category" select="getChild" column="id">
+            <id column="id" property="id"></id>
+            <result column="parentid" property="parentId"></result>
+            <result column="cname" property="cname"></result>
+        </collection>
+    </resultMap>
+
+    <select id="getChild" resultMap="BaseResultMap3">
+        select *
+        from category
+        where parentid = #{id}
+    </select>
+    <resultMap id="BaseResultMap3" type="org.neuedu.model.Category">
+        <id column="id" property="id"></id>
+        <result column="parentid" property="parentId"></result>
+        <result column="cname" property="cname"></result>
+        <collection property="child" ofType="org.neuedu.model.Category" select="getChild" column="id">
+            <id column="id" property="id"></id>
+            <result column="parentid" property="parentId"></result>
+            <result column="cname" property="cname"></result>
+        </collection>
+    </resultMap>
+</mapper>
