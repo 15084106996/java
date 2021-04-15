@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>学员打卡首页</title>
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script src="https://unpkg.com/http-vue-loader"></script>
+    <script src="./js/echarts.min.js"></script>
+    <style>
+        .indexHeader{
+            height: 50px;
+            background: #40AFFE;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .el-dropdown-link {
+            cursor: pointer;
+            color: #fff;
+        }
+        .el-icon-arrow-down {
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body style="margin:0;">
+    <div id="app">
+        <el-container>
+            <el-header class="indexHeader">
+                <h3>Java20签到打卡系统</h3>
+                <el-dropdown @command="dropdownCommand">
+                      <span class="el-dropdown-link">
+                        {{loginInfo.nickname}}<i class="el-icon-arrow-down el-icon--right"></i></span>
+                    <el-dropdown-menu slot="dropdown">
+                        <el-dropdown-item command="userSettings">用户中心</el-dropdown-item>
+                        <el-dropdown-item divided command="logout">用户退出</el-dropdown-item>
+                    </el-dropdown-menu>
+                </el-dropdown>
+            </el-header>
+            <el-container>
+                <el-aside width="200px">
+                    <el-menu default-active="1">
+                        <el-menu-item index="1" v-if="loginInfo.userType == 0">
+                            <i class="el-icon-edit-outline"></i>
+                            <span slot="title">打卡签到</span>
+                        </el-menu-item>
+                        <el-menu-item index="1" v-else>
+                            <i class="el-icon-edit-outline"></i>
+                            <span slot="title">签到信息</span>
+                        </el-menu-item>
+                    </el-menu>
+                </el-aside>
+                <el-main>
+                    <!--普通用户看到的信息-->
+                    <usercomponent v-if="loginInfo.userType == 0"></usercomponent>
+                    <!--管理员看到的信息-->
+                    <admincomponent v-else></admincomponent>
+                </el-main>
+            </el-container>
+        </el-container>
+    </div>
+    <script>
+        Vue.use(httpVueLoader);
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                loginInfo:JSON.parse(window.sessionStorage.getItem('loginUser'))
+            },
+            methods:{
+                dropdownCommand(command) {// 点击菜单项的回调函数
+                    if (command == 'logout') {
+                        this.$confirm('此操作将退出系统, 是否继续?', '退出系统', {
+                            confirmButtonText: '确定',
+                            cancelButtonText: '取消',
+                            type: 'warning'
+                        }).then(() => {
+                            window.sessionStorage.removeItem('loginUser');
+                            window.location.href = './Login.html';
+                        }).catch(() => {
+                            this.$message({
+                                type: 'info',
+                                message: '已取消退出'
+                            });
+                        });
+                    }
+                },
+                loginCheck() {// 用户登录验证
+                    if (this.loginInfo == null) {
+                        window.location.href = './Login.html';
+                    }
+                }
+            },
+            mounted() {
+                this.loginCheck();
+            },
+            components:{
+                usercomponent : 'url:./UserComponent.vue',
+                admincomponent : 'url:./AdminComponent.vue',
+            }
+        })
+    </script>
+</body>
+</html>

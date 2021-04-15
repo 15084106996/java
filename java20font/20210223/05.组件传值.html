@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app">
+        <my-component :aaa="counts"></my-component>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        let myComponent = {
+            template : `<div>
+                            <button>被点击 {{aaa}} 次</button>
+                        </div>`,
+            data() {
+                return{}
+            },
+            methods: {},
+            props:['aaa']
+        }
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                counts : 100
+            },
+            components:{
+                myComponent
+            }
+        })
+    </script>
+</body>
+</html>

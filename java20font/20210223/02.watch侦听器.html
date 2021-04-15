@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="num">
+    </div>
+    <!--
+        methods : 调用几次，就执行几次，普通的函数
+        computed : 当页面用到计算属性时，如果计算属性没有改变过，内部其实只执行过一次函数
+        watch ：写一些需要被侦听的属性函数，能够侦听到属性的变换
+    -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                num:100,
+                msg : 'aaa'
+            },
+            methods:{},
+            computed: {},
+            watch:{// 侦听器
+                num(newValue,oldValue) {// 第一个参数，是属性的当前的值，第二个参数是上一次的值
+                    if (newValue > 10000) {
+                        console.log('hello');
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>

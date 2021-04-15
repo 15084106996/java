@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app">
+        <!--文本框绑简单数据-->
+        <input type="text" v-model="username" placeholder="用户名">
+        <!--文本框和单选框绑定对象-->
+        <div>
+            <input type="text" v-model="user.username" placeholder="用户名">
+            <input type="password" v-model="user.password" placeholder="用户密码">
+            <input type="radio" v-model="user.gender" value="false">男
+            <input type="radio" v-model="user.gender" value="true">女
+        </div>
+        <!--复选框-->
+        <div>
+            <input type="checkbox" v-model="user.course" value="101"/> Java
+            <input type="checkbox" v-model="user.course" value="102"/> Mysql
+            <input type="checkbox" v-model="user.course" value="103"/> Html
+            <input type="checkbox" v-model="user.course" value="104"/> Css
+            <input type="checkbox" v-model="user.course" value="105"/> JavaScript
+        </div>
+        <!--下拉框-->
+        <div>
+            <select v-model="user.location">
+                <option value="-1">省份</option>
+                <option value="liaoning">辽宁</option>
+                <option value="hebei">河北</option>
+                <option value="hubei">湖北</option>
+                <option value="jilin">吉林</option>
+                <option value="jiangsu">江苏</option>
+            </select>
+        </div>
+        <!--文本域-->
+        <textarea v-model="user.sign" cols="50" rows="10"></textarea>
+        <!--展示数据-->
+        <hr>
+        <div>
+            <p>{{username}}</p>
+            <p>{{user}}</p>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        /*
+            MVVM框架：M-model数据，V-view视图，VM-viewModel视图模型
+            Vue:
+                1.数据驱动
+                2.双向绑定
+            表单控件能双向绑定
+        */
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                username : 'root',
+                user : {
+                    username : 'mike',
+                    password : '123',
+                    gender: false,
+                    course : [],
+                    location : 'liaoning',
+                    sign : '常在河边走，哪能不湿鞋'
+                }
+            },
+            methods:{}
+        })
+    </script>
+</body>
+</html>

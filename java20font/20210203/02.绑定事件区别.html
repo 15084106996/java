@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <button>按钮</button>
+    <div id="box">
+
+    </div>
+
+    <script src="./js/jquery.js"></script>
+    <script>
+        $('button').eq(0).click(() => {
+           let oBtn = $(`<button id="btn">按钮2</button>`);
+           $('#box').append(oBtn);
+        })
+
+        $(document).on('click','#btn',() => {
+            alert(103);
+        })
+    </script>
+</body>
+</html>

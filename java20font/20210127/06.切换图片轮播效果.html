@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            padding:0;
+            margin:0;
+        }
+        a {
+            width: 50px;
+            line-height: 50px;
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            background: #000;
+            opacity: 0.5;
+            text-align: center;
+            border:5px solid #a5a5a5;
+            border-radius: 50%;
+            position: absolute;
+            top:140px;
+        }
+        a:hover{
+            opacity: 0.7;
+            transform: scale(1.1);/*缩放比例*/
+            transition: 0.3s;/*过渡时间*/
+        }
+        #box{
+            width: 640px;
+            height: 340px;
+            border: 10px solid #a5a5a5;
+            margin: 100px auto;
+            position: relative;
+            overflow: hidden;
+        }
+        .leftBtn{
+            left:20px;
+        }
+        .rightBtn{
+            right:20px;
+        }
+        /*imgContent*/
+        .imgContent{
+            width: 3200px;
+            height: 100%;
+            font-size: 0;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <div class="imgContent">
+            <img src="./image/1.jpg" alt="">
+            <img src="./image/2.jpg" alt="">
+            <img src="./image/3.jpg" alt="">
+            <img src="./image/4.jpg" alt="">
+            <img src="./image/1.jpg" alt="">
+        </div>
+        <a href="javascript:;" class="leftBtn"><</a>
+        <a href="javascript:;" class="rightBtn">></a>
+    </div>
+
+    <script src="js/myjs.js"></script>
+    <script>
+        let oBox = document.getElementById('box');
+        let oPrev = oBox.getElementsByTagName('a')[0];
+        let oNext = oBox.getElementsByTagName('a')[1];
+        let oDiv = oBox.getElementsByTagName('div')[0];
+
+        let index = 0;
+        let bool = true;
+
+        oNext.onclick = () => {
+            if (!bool) {
+                return;
+            }
+            bool = false;
+            index++;
+            if (index >= 5) {
+                index = 1;
+                oDiv.style.left = 0;
+            }
+            doMove(oDiv, 'left', 30, index*-640,()=>{
+                bool = true;
+            });
+        }
+
+        oPrev.onclick = () => {
+            if (!bool) {
+                return;
+            }
+            bool = false;
+            index--;
+            if (index < 0) {
+                index = 3;
+                oDiv.style.left = '-2560px';
+            }
+            doMove(oDiv, 'left', 30, index*-640,()=>{
+                bool = true;
+            });
+        }
+    </script>
+</body>
+</html>

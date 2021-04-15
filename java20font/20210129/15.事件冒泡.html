@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <!--
+        事件流:
+            一个元素身上的事件，对这个元素的所有父级元素都会进行 "冒泡"
+    -->
+    <div id="box"></div>
+
+    <script>
+        let oBox = document.getElementById('box');
+        oBox.onclick = (ev) => {
+            oBox.style.display = 'none';
+            ev.cancelBubble = true;
+        }
+
+        document.onclick = () => {
+            oBox.style.display = 'block';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        #newsText{
+            width: 240px;
+            height: 50px;
+            position: relative;
+        }
+        .bg{
+            width: 100%;
+            height: 100%;
+            background: red;
+            opacity: 0.5;
+            position: absolute;
+            left:0;
+            top:0;
+        }
+        #newsText p{
+            width: 100%;
+            text-align: center;
+            line-height: 50px;
+            position: absolute;
+            left:0;
+            top:0;
+            cursor: pointer;
+        }
+        #newsText p:hover{
+            color: orange;
+        }
+    </style>
+</head>
+<body>
+    <div id="newsText">
+        <div class="bg"></div>
+        <p>新浪新闻红包季 8.8红包人人有</p>
+    </div>
+</body>
+</html>

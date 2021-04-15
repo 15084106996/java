@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <input type="text">
+    <a href="https://www.baidu.com/s?wd=">百度</a>
+    <script>
+        document.getElementsByTagName('a')[0].onclick = () => {
+            let value = document.getElementsByTagName('input')[0].value;
+            if (value != null && value != '' && value.trim() != '') {
+                document.getElementsByTagName('a')[0].href += value;
+            }else{
+                alert('对不起，请正确填写');
+                return false;
+            }
+        }
+    </script>
+</body>
+</html>

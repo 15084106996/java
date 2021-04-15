@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <select id="province">
+        <option value="-1">省份</option>
+    </select>
+
+    <select id="city">
+        <option value="">城市</option>
+    </select>
+
+    <script>
+        let oPro = document.getElementById('province');
+        let oCity = document.getElementById('city');
+        let data = {
+            "辽宁":["沈阳","大连","锦州","营口","鞍山","阜新"],
+            "黑龙江":["哈尔滨","佳木斯","漠河","黑河"],
+            "湖北":["武汉","襄阳","十堰","黄石","宜昌"]
+        }
+        for (let key in data) {
+            oPro.innerHTML += `<option value="${key}">${key}</option>`;
+        }
+
+        oPro.onchange = () => {
+            let active = oPro.value;
+            if (active != "-1") {
+                let city = data[active];
+                oCity.innerHTML = `<option value="">城市</option>`;
+                city.forEach((item,index) => {
+                    oCity.innerHTML += `<option value="${item}">${item}</option>`;
+                })
+            }else{
+                oCity.innerHTML = '<option value="">城市</option>';
+            }
+        }
+    </script>
+</body>
+</html>

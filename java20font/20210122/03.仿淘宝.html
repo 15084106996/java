@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="./image/favicon.ico">
+    <link rel="stylesheet" href="./font-awesome-4.7.0/css/font-awesome.min.css">
+    <title>淘宝网触屏版</title>
+    <style>
+        /*样式重置*/
+        *{
+            padding:0;
+            margin: 0
+        }
+        ul{
+            list-style: none;
+        }
+        body{
+            padding-top: 12vw;
+            background: #f4f4f4;
+        }
+        /*头部*/
+        #header{
+            width: 100%;
+            height: 12vw;
+            display: flex;
+            background: #ff852a;
+            align-items: center;
+            justify-content: space-around;
+            position: fixed;
+            top:0;
+        }
+        .bgLogo{
+            width: 7vw;
+            height: 5vw;
+            background: url("./image/taobaobg.png") no-repeat;
+            background-size: contain;
+        }
+        .search{
+            width: 85vw;
+            line-height: 7vw;
+            background: #ff4e22;
+            font-size: 3.5vw;
+            color: #fff;
+            text-align: center;
+            border-radius: 1vw;
+        }
+        /*  轮播  */
+        #loop {
+            width: 100%;
+            height: 30vw;
+        }
+        #loop img{
+            width: 100%;
+            height: 100%;
+        }
+        /*  导航  */
+        #nav{
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            background: #fff;
+            padding-bottom: 4vw;
+        }
+        #nav li{
+            width: 20vw;
+            height: 20vw;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        #nav li img{
+            width: 17vw;
+            height: 14vw;
+        }
+        #nav li p{
+            font-size: 3.5vw;
+            color: #666;
+        }
+        /* 商品推荐 */
+        #products{
+            width: 95%;
+            background: #fff;
+            border-radius: 3vw;
+            margin:3vw auto;
+            display: flex;
+        }
+        .proLeft,.proRight{
+            width: 50%;
+            box-sizing: border-box;
+        }
+        .proLeft{
+            border-right: 1px solid #e4e4e5;
+        }
+        .proLeft .proList{
+            width: 100%;
+            display: flex;
+            padding-left: 1.5vw;
+            padding-top:1.5vw;
+        }
+        .proLeft .proList .proListLeft,.proLeft .proList .proListRight{
+            width: 50%;
+        }
+        .proLeft .proList .proListLeft h3{
+            font-size: 4.5vw;
+        }
+        .proLeft .proList .proListLeft .proImg,.proLeft .proList .proListRight .proImg{
+            width: 20vw;
+            background: #fdf5f2;
+            box-sizing: border-box;
+            padding:1.5vw;
+            border-radius: 2vw;
+            text-align: center;
+            margin-top:1vw;
+            padding:1vw 0;
+        }
+        .proLeft .proList .proListLeft .proImg p,.proLeft .proList .proListRight .proImg p{
+            font-size: 3.5vw;
+            color: #ff4e22;
+            font-weight: bold;
+            margin:1vw 0;
+        }
+        .proLeft .proList .proListLeft .proImg img,.proLeft .proList .proListRight .proImg img{
+            width: 14vw;
+            height: 16vw;
+        }
+        .proLeft .proList .proListRight{
+            margin-top: 6vw;
+        }
+        /*右半部分*/
+        .proRight .proList{
+            width: 100%;
+            display: flex;
+            padding-left: 1.5vw;
+            padding-top:1.5vw;
+        }
+        .proRight .proList .proListLeft,.proRight .proList .proListRight{
+            width: 50%;
+        }
+        .proRight .proList .proListLeft h3{
+            font-size: 4.5vw;
+        }
+        .proRight .proList .proListLeft .proImg,.proRight .proList .proListRight .proImg{
+            width: 20vw;
+            background: #fdf5f2;
+            box-sizing: border-box;
+            padding:1.5vw;
+            border-radius: 2vw;
+            text-align: center;
+            margin-top:1vw;
+        }
+        .proRight .proList .proListLeft .proImg p,.proRight .proList .proListRight .proImg p{
+            font-size: 3.5vw;
+            color: #ff4e22;
+            font-weight: bold;
+            margin:1vw 0;
+        }
+        .proRight .proList .proListLeft .proImg img,.proRight .proList .proListRight .proImg img{
+            width: 14vw;
+            height: 16vw;
+        }
+        .proRight .proList .proListRight{
+            margin-top: 6vw;
+        }
+    </style>
+</head>
+<body>
+    <!--头部-->
+    <div id="header">
+        <div class="bgLogo"></div>
+        <div class="search"><i class="fa fa-search" aria-hidden="true"></i> 寻找宝贝店铺</div>
+    </div>
+    <!--轮播-->
+    <div id="loop">
+        <img src="//img.alicdn.com/imgextra/i3/2206686532409/O1CN01c0bzrk1TfMmAxGlpO_!!2206686532409-0-lubanimage.jpg" alt="">
+    </div>
+    <!--  导航图片  -->
+    <ul id="nav">
+        <li>
+            <img src="https://gw.alicdn.com/tfs/TB1OIxTcLc3T1VjSZLeXXbZsVXa-183-144.png?getAvatar=1" alt="">
+            <p>天猫新品</p>
+        </li>
+        <li>
+            <img src="https://gw.alicdn.com/tfs/TB1LvIxVAvoK1RjSZFDXXXY3pXa-183-144.png?getAvatar=1" alt="">
+            <p>天猫新品</p>
+        </li>
+        <li>
+            <img src="https://gw.alicdn.com/tfs/TB19uWKXkCy2eVjSZPfXXbdgpXa-183-144.png?getAvatar=1" alt="">
+            <p>天猫新品</p>
+        </li>
+        <li>
+            <img src="https://gw.alicdn.com/tfs/TB1DaMyVpzqK1RjSZFoXXbfcXXa-185-144.png?getAvatar=1" alt="">
+            <p>天猫新品</p>
+        </li>
+        <li>
+            <img src="https://gw.alicdn.com/tfs/TB1FucwVwHqK1RjSZFgXXa7JXXa-183-144.png?getAvatar=1" alt="">
+            <p>天猫新品</p>
+        </li>
+        <li>
+            <img src="https://gw.alicdn.com/tfs/TB1llI3f4n1gK0jSZKPXXXvUXXa-183-144.png?getAvatar=1" alt="">
+            <p>天猫新品</p>
+        </li>
+        <li>
+            <img src="https://gw.alicdn.com/tfs/TB1O_AyVwHqK1RjSZFPXXcwapXa-183-144.png?getAvatar=1" alt="">
+            <p>天猫新品</p>
+        </li>
+        <li>
+            <img src="https://gw.alicdn.com/tfs/TB19yZJVBLoK1RjSZFuXXXn0XXa-183-144.png?getAvatar=1" alt="">
+            <p>天猫新品</p>
+        </li>
+        <li>
+            <img src="https://gw.alicdn.com/tfs/TB16ZYDk4n1gK0jSZKPXXXvUXXa-183-144.png?getAvatar=1" alt="">
+            <p>天猫新品</p>
+        </li>
+        <li>
+            <img src="https://gw.alicdn.com/tfs/TB19dcwVyrpK1RjSZFhXXXSdXXa-183-144.png?getAvatar=1" alt="">
+            <p>天猫新品</p>
+        </li>
+    </ul>
+    <!--  商品推荐  -->
+    <div id="products">
+        <!--    聚划算    -->
+        <div class="proLeft">
+            <div class="proList">
+                <div class="proListLeft">
+                    <h3>聚划算</h3>
+                    <div class="proImg">
+                        <p>品牌折扣</p>
+                        <img src="//gw.alicdn.com/bao/uploaded/i4/43623533/O1CN01oXWo6j1by9xKMQT29_!!43623533.jpg_500x500q90.jpg_.webp" alt="">
+                    </div>
+                </div>
+                <div class="proListRight">
+                    <div class="proImg">
+                        <p>划算好货</p>
+                        <img src="//gw.alicdn.com/bao/uploaded/i2/1792159881/O1CN01roc9Ax2MrYAXlTFyz_!!0-item_pic.jpg_500x500q90.jpg_.webp" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="proList">
+                <div class="proListLeft">
+                    <h3>聚划算</h3>
+                    <div class="proImg">
+                        <p>品牌折扣</p>
+                        <img src="//gw.alicdn.com/bao/uploaded/i4/43623533/O1CN01oXWo6j1by9xKMQT29_!!43623533.jpg_500x500q90.jpg_.webp" alt="">
+                    </div>
+                </div>
+                <div class="proListRight">
+                    <div class="proImg">
+                        <p>划算好货</p>
+                        <img src="//gw.alicdn.com/bao/uploaded/i2/1792159881/O1CN01roc9Ax2MrYAXlTFyz_!!0-item_pic.jpg_500x500q90.jpg_.webp" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="proList">
+                <div class="proListLeft">
+                    <h3>聚划算</h3>
+                    <div class="proImg">
+                        <p>品牌折扣</p>
+                        <img src="//gw.alicdn.com/bao/uploaded/i4/43623533/O1CN01oXWo6j1by9xKMQT29_!!43623533.jpg_500x500q90.jpg_.webp" alt="">
+                    </div>
+                </div>
+                <div class="proListRight">
+                    <div class="proImg">
+                        <p>划算好货</p>
+                        <img src="//gw.alicdn.com/bao/uploaded/i2/1792159881/O1CN01roc9Ax2MrYAXlTFyz_!!0-item_pic.jpg_500x500q90.jpg_.webp" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--    淘宝直播    -->
+        <div class="proRight">
+            <div class="proList">
+                <div class="proListLeft">
+                    <h3>聚划算</h3>
+                    <div class="proImg">
+                        <p>品牌折扣</p>
+                        <img src="//gw.alicdn.com/bao/uploaded/i4/43623533/O1CN01oXWo6j1by9xKMQT29_!!43623533.jpg_500x500q90.jpg_.webp" alt="">
+                    </div>
+                </div>
+                <div class="proListRight">
+                    <div class="proImg">
+                        <p>划算好货</p>
+                        <img src="//gw.alicdn.com/bao/uploaded/i2/1792159881/O1CN01roc9Ax2MrYAXlTFyz_!!0-item_pic.jpg_500x500q90.jpg_.webp" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="proList">
+                <div class="proListLeft">
+                    <h3>聚划算</h3>
+                    <div class="proImg">
+                        <p>品牌折扣</p>
+                        <img src="//gw.alicdn.com/bao/uploaded/i4/43623533/O1CN01oXWo6j1by9xKMQT29_!!43623533.jpg_500x500q90.jpg_.webp" alt="">
+                    </div>
+                </div>
+                <div class="proListRight">
+                    <div class="proImg">
+                        <p>划算好货</p>
+                        <img src="//gw.alicdn.com/bao/uploaded/i2/1792159881/O1CN01roc9Ax2MrYAXlTFyz_!!0-item_pic.jpg_500x500q90.jpg_.webp" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="proList">
+                <div class="proListLeft">
+                    <h3>聚划算</h3>
+                    <div class="proImg">
+                        <p>品牌折扣</p>
+                        <img src="//gw.alicdn.com/bao/uploaded/i4/43623533/O1CN01oXWo6j1by9xKMQT29_!!43623533.jpg_500x500q90.jpg_.webp" alt="">
+                    </div>
+                </div>
+                <div class="proListRight">
+                    <div class="proImg">
+                        <p>划算好货</p>
+                        <img src="//gw.alicdn.com/bao/uploaded/i2/1792159881/O1CN01roc9Ax2MrYAXlTFyz_!!0-item_pic.jpg_500x500q90.jpg_.webp" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--    淘宝头条    -->
+        <div class="proFoot"></div>
+    </div>
+</body>
+</html>

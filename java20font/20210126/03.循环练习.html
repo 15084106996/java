@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box{
+            width: 656px;
+            height: 350px;
+            display: flex;
+            flex-wrap: wrap;
+            position: relative;
+        }
+        #box div {
+            width: 80px;
+            height: 68px;
+            margin-right: 2px;
+            margin-bottom: 2px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+
+    <script>
+        let oBox = document.getElementById('box');
+        for (let i = 0; i < 5 ; i++) {
+            for (let j = 0; j < 8; j++) {
+                oBox.innerHTML += `<div style="background: url('./images/bg.jpg') ${j*(-80)}px ${i*(-68)}px"></div>`;
+            }
+        }
+
+        for (let i = 0; i < 5 ; i++) {
+            for (let j = 0; j < 8; j++) {
+                oBox.innerHTML += `<div class="hide" style="background: #fff;opacity: 0.5;position: absolute;left:${j*82}px;top:${i*70}px;"></div>`;
+            }
+        }
+
+        let aHide = oBox.getElementsByClassName('hide');
+        for (let hide of aHide) {
+            hide.onmouseover = () => {
+                hide.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>

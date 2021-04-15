@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box {
+            width: 200px;
+            height: 600px;
+            border: 1px solid red;
+            display: flex;
+            /*flex-direction: column;*/
+            flex-wrap: wrap;
+            /*justify-content: space-around;*/
+            align-items: center;
+            /*align-content: center;*/
+        }
+        #box div {
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <!--
+        弹性布局
+            主轴 默认是x方向是主轴
+            侧轴 默认是y方向是侧轴
+        父级元素宽度不够，子集元素是不会自动换行，会等比压缩
+    -->
+    <div id="box">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+    </div>
+</body>
+</html>

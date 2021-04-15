@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <my-component @click="getNum"></my-component>
+    {{counts}}
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    let myComponent = {
+        template : `<div>
+                            <button @click="transfer">按钮</button>
+                    </div>`,
+        data() {
+            return{
+                num : 20011111
+            }
+        },
+        methods: {
+            // 向外传值
+            transfer() {
+                this.$emit('click',this.num);
+            }
+        }
+    }
+    const vm = new Vue({
+        el: '#app',
+        data: {
+            counts : 0
+        },
+        methods:{
+            getNum(target) {
+                this.counts = target;
+            }
+        },
+        components:{
+            myComponent
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <input type="text" id="text" ok="ok123">
+    <img src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2731513765,1542058871&fm=26&gp=0.jpg" alt="">
+    <button>按钮</button>
+
+    <script src="js/jquery.js"></script>
+    <script>
+        $('button').click(function () {
+            // 获取value值
+            // alert($('#text').val());
+            // 写
+            // $('#text').val('123');
+
+            // 获取属性值
+            // alert($('#text').attr('ok'));
+            // 修改属性
+            $('img').attr('src','https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=391168269,3507650849&fm=26&gp=0.jpg')
+        })
+    </script>
+</body>
+</html>

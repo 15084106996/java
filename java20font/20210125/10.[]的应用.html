@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <input type="text">
+    <input type="text">
+    <button onclick="tabDiv()">走你</button>
+    <div id="box"></div>
+    <script>
+        let oBox = document.getElementById('box');
+        let oInp1 = document.getElementsByTagName('input')[0];// width
+        let oInp2 = document.getElementsByTagName('input')[1];// 300px
+        let tabDiv = () => {
+            oBox.style[oInp1.value] = oInp2.value;
+        }
+    </script>
+</body>
+</html>

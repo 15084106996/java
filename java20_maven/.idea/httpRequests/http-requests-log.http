@@ -1,8 +1,0 @@
-POST http://localhost:8081/doLogin?username=root&password=123
-Accept: */*
-Cache-Control: no-cache
-
-<> 2021-03-15T114607.200.json
-
-###
-

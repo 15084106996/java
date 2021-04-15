@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background: red;
+            position: absolute;
+        }
+    </style>
+</head>
+<body style="width:3000px;height: 2000px">
+    <div id="box"></div>
+    <script>
+        let oBox = document.getElementById('box');
+        document.onmousemove = (ev) => {
+            // clientX 和 clientY 可视区的 x 值和 y 值
+            // pageX 和 pageY 整个页面的x 值和 y 值
+            let x = ev.pageX;
+            let y = ev.pageY;
+            // oBox.style.left = x  + document.documentElement.scrollLeft +'px';
+            // oBox.style.top = y + document.documentElement.scrollTop + 'px';
+            oBox.style.left = x + 'px';
+            oBox.style.top = y + 'px';
+        }
+    </script>
+</body>
+</html>

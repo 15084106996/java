@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn" type="button">按钮</button>
+    <br><br>
+    <div id="box"></div>
+
+
+    <script>
+        // 如何获取页面上的元素
+        let oBtn = document.getElementById('btn');
+        let oBox = document.getElementById('box');
+        // 绑定事件 元素.事件
+        // onclick 左键单击
+        // onmouseover 鼠标移入
+        // onmouseout 鼠标移出
+        // onmousedown 鼠标按住
+        // onmouseup 鼠标抬起
+        // onkeydown 按键按下
+        // oncontextmenu 右键单击
+        let onOff = true;
+        oBtn.onclick = function () {
+            if (onOff) {
+                oBox.style.display = 'none';
+            } else{
+                oBox.style.display = 'block';
+            }
+            onOff = !onOff;
+        }
+    </script>
+</body>
+</html>

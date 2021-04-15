@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        let arr = [1, 2, 3, 4];
+        // json 对象
+        let user = {
+            username : "tom",
+            age : 12
+        };
+        console.log(user.username);
+
+        let userList = [
+            {username:"tom",age:12,gender:false},
+            {username:"bob",age:13,gender:false},
+            {username:"lucy",age:14,gender:true},
+            {username:"ella",age:15,gender:true},
+            {username:"mike",age:16,gender:false}
+        ];
+
+        userList.forEach((item,i) => {
+            console.log(item.username)
+        })
+
+    </script>
+</body>
+</html>

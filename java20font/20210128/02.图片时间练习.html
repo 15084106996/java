@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        img {
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <div id="imgBox">
+        <img src="./image/0.png" alt="">
+        <img src="./image/0.png" alt="">
+        <img src="./image/fh.png" alt="">
+        <img src="./image/0.png" alt="">
+        <img src="./image/0.png" alt="">
+        <img src="./image/fh.png" alt="">
+        <img src="./image/0.png" alt="">
+        <img src="./image/0.png" alt="">
+    </div>
+
+    <script>
+
+        let oBox = document.getElementById('box');
+        let oImgBox = document.getElementById('imgBox');
+        let aImg = oImgBox.getElementsByTagName('img');
+
+        let showTime = () => {
+            let time = new Date();
+            let hour = (time.getHours() + "").padStart(2,"0");
+            let min = (time.getMinutes() + "").padStart(2,"0");
+            let sec = (time.getSeconds() + "").padStart(2,"0");
+            let str = `${hour}:${min}:${sec}`;
+            oBox.innerHTML = str;
+
+            for (let i = 0; i < str.length; i++) {
+                let c = str.charAt(i);
+                if (c != ':') {
+                    aImg[i].src = `./image/${c}.png`;
+                }
+            }
+        }
+        showTime();
+
+        setInterval(() => {
+            showTime();
+        },1000)
+    </script>
+</body>
+</html>

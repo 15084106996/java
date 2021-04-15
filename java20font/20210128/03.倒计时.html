@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <script>
+        let future = new Date(2021, 0, 28, 10, 30, 40);
+        let timer = setInterval(()=>{
+            let now = new Date();
+            let sec = Math.floor((future - now)/1000);
+            let str = null;
+            if (sec < 0) {
+                str = `0天0小时0分0秒`;
+                clearInterval(timer);
+            }else{
+                let day = Math.floor(sec / 86400);
+                let hour = Math.floor(sec %86400 /3600);
+                let min = Math.floor(sec % 86400 % 3600 / 60);
+                let secs = sec % 60;
+                str = `${day}天${hour}小时${min}分${secs}秒`;
+            }
+            document.body.innerHTML = `距离新年还有${str}`;
+        },1000)
+    </script>
+</body>
+</html>

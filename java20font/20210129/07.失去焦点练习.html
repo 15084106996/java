@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" id="text">
+<span id="msg" style="color: red"></span>
+<script>
+    let oText = document.getElementById('text');
+    let oMsg = document.getElementById('msg');
+    oText.onblur = () => {
+        if (oText.value == '') {
+            oMsg.innerHTML = '没有输入内容'
+        }
+    }
+</script>
+</body>
+</html>

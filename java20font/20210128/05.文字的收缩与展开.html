@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box {
+            width: 350px;
+            padding: 10px;
+            border: 10px solid #a7a7a7;
+            background: #1887bd;
+            color: #fff;
+            margin: 180px auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <span>
+            东软睿道是一支独具特色的IT培训团队，东软睿道是一支独具特色的IT培训团队，
+            东软睿道是一支独具特色的IT培训团队，东软睿道是一支独具特色的IT培训团队，东软睿道是
+            一支独具特色的IT培训团队，东软睿道是一支独具特色的IT培训团队，东软睿道是一支独具特
+            色的IT培训团队，东软睿道是一支独具特色
+        </span>....<a href="javascript:;"><<< 收缩</a>
+    </div>
+
+    <script>
+        let oBox = document.getElementById('box');
+        let oSpan = oBox.getElementsByTagName('span')[0];
+        let oA = oBox.getElementsByTagName('a')[0];
+        let temp = oSpan.innerHTML;
+        let onOff = true;
+        oA.onclick = () =>{
+            if (onOff) {
+                oSpan.innerHTML = oSpan.innerHTML.substr(0, 40);
+                oA.innerHTML = '>>> 展开';
+            }
+            else{
+                oSpan.innerHTML = temp;
+                oA.innerHTML = '<<< 收缩';
+            }
+            onOff = !onOff;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <button @click="add">添加</button>
+    <ul>
+        <li v-for="(item,index) in userList" :key="item.id">
+            <input type="checkbox">
+            {{item.id}},
+            {{item.username}},
+            {{item.gender}},
+            <span v-if="item.gender">女</span>
+            <span v-else>男</span>
+        </li>
+    </ul>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    const vm = new Vue({
+        el: '#app',
+        data: {
+            num : 100,
+            userList:[
+                {id:1001,username:'tom',gender:false},
+                {id:1002,username:'lucy',gender:true},
+                {id:1003,username:'ella',gender:true},
+                {id:1004,username:'bob',gender:false},
+            ]
+        },
+        methods:{
+            add() {
+                // userList 添加一个对象 {id:1005,username:'mike',gender:false}
+                let user = {id:1005,username:'mike',gender:false};
+                this.userList.unshift(user);
+            }
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            margin: 0;
+        }
+        h3{
+            display: flex;
+            line-height: 40px;
+        }
+        .clickBtn {
+            padding:5px 15px;
+            background: red;
+            color: #fff;
+            font-weight: bold;
+            user-select: none;
+            cursor: pointer;
+        }
+        #box {
+            width: 100px;
+            height: 100px;
+            border: 5px solid #000000;
+        }
+        #hidden {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top:0;
+            left:0;
+            display: none;
+        }
+        .bg{
+            width: 100%;
+            height: 100%;
+            background: #000;
+            opacity: 0.4;
+            top:0;
+            left:0;
+        }
+        .content {
+            width: 300px;
+            height: 300px;
+            background: #fff;
+            border:10px solid #666;
+            position: absolute;
+            right: 200px;
+            top:300px;
+            text-align: center;
+        }
+        .content span {
+            padding: 5px;
+            border:3px solid #d6d6d6;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h3>请设置div样式：<div class="clickBtn" onclick="showHidden()">点击设置</div></h3>
+    <div id="box"></div>
+
+    <div id="hidden">
+        <div class="bg"></div>
+        <div class="content">
+            <p>请选择背景色：<span onclick="setColor(1)">红</span> <span onclick="setColor(2)">黄</span> <span onclick="setColor(3)">绿</span></p>
+        </div>
+    </div>
+
+    <script>
+        let oHidden = document.getElementById('hidden');
+        let oBox = document.getElementById('box');
+        let showHidden = () => {
+            oHidden.style.display = 'block';
+        }
+        let setColor = (num) => {
+            if (num == 1) {
+                oBox.style.background = 'red';
+            }else if(num == 2){
+                oBox.style.background = 'yellow';
+            }else if(num == 3){
+                oBox.style.background = 'green';
+            }
+        }
+    </script>
+</body>
+</html>

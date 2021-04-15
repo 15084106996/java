@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <div id="box"></div>
+
+    <script>
+
+        let oBox = document.getElementById('box');
+
+        setInterval(() => {
+            let time = new Date();
+            let year = time.getFullYear();
+            let month = (time.getMonth() + 1 + "").padStart(2,"0");
+            let date = (time.getDate() + "").padStart(2,"0");
+            let hour = (time.getHours() + "").padStart(2,"0");
+            let min = (time.getMinutes() + "").padStart(2,"0");
+            let sec = (time.getSeconds() + "").padStart(2,"0");
+            oBox.innerHTML = `${year}-${month}-${date} ${hour}:${min}:${sec}`;
+        },1000)
+    </script>
+</body>
+</html>

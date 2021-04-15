@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <input id="name" type="text">
+    <select id="location">
+        <option value="沈阳">沈阳</option>
+        <option value="大连">大连</option>
+        <option value="锦州">锦州</option>
+        <option value="营口">营口</option>
+    </select>
+    <button onclick="goYou()">走你</button>
+
+    <script>
+        let name = document.getElementById('name');
+        let oLoc = document.getElementById('location');
+
+        let goYou = () => {
+            console.log(name.value+" 在 "+oLoc.value)
+        }
+    </script>
+</body>
+</html>

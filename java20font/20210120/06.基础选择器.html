@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--  内部样式  -->
+    <style>
+        /*标签选择器*/
+        div{
+           color:red;
+        }
+        /*class选择器,优先级高于标签选择器*/
+        .gr{
+            color:green;
+        }
+        /*id选择器,优先级高于class选择器*/
+        #box{
+            color:blue;
+        }
+    </style>
+</head>
+<body>
+    <!-- 行间样式 -->
+    <div>东软睿道</div>
+    <div>东软睿道</div>
+    <div>东软睿道</div>
+    <div>东软睿道</div>
+    <div>东软睿道</div>
+    <div id="box" class="gr">东软睿道</div>
+    <p class="gr">东软睿道</p>
+</body>
+</html>

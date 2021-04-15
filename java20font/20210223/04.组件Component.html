@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app">
+        {{num}}
+        <my-btn></my-btn>
+        <my-btn></my-btn>
+        <my-btn></my-btn>
+        <my-btn></my-btn>
+        <my-btn2></my-btn2>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        // 全局组件,名字如果是驼峰命名形式，使用组件时，名字加-，例如：my-btn
+        Vue.component('myBtn',{
+            template : `<div><button @click="add">我被点击了 {{num}} 次</button></div>`,
+            data() {
+                return {
+                    num : 0
+                }
+            },
+            methods:{
+                add() {
+                    this.num++;
+                }
+            }
+        })
+
+        // 局部组件 -- 需要注册
+        let myBtn2 = {
+            template : `<div><button @click="add">我被点击了 {{num}} 次</button></div>`,
+            data() {
+                return {
+                    num : 0
+                }
+            },
+            methods:{
+                add() {
+                    this.num++;
+                }
+            }
+        };
+
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                num:100
+            },
+            components:{
+                myBtn2
+            }
+        })
+    </script>
+</body>
+</html>

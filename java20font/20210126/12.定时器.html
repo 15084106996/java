@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+
+    <script>
+        let oBox = document.getElementById('box');
+        let i = 1;
+        let num = 100;
+        // 勤劳 ：永远不会主动停止，每隔一定时间做一次
+        // let timer = setInterval(() => {
+        //     oBox.innerHTML = i;
+        //     if (i == 10) {
+        //         clearInterval(timer);
+        //     }
+        //     i++;
+        // },1000)
+
+        // 懒惰 ：只在一定时间后做一次
+        let timer = setTimeout(() => {
+            if (num > 500) {
+                clearTimeout(timer)
+            }
+            console.log(100);
+        },5000)
+    </script>
+</body>
+</html>

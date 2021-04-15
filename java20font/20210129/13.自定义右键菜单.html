@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #list {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            width: 150px;
+            border: 1px solid #d6d6d6;
+            position: absolute;
+            display: none;
+        }
+        #list li {
+            line-height: 26px;
+            text-align: center;
+            border-bottom: 1px dashed #d6d6d6;
+            cursor: pointer;
+        }
+        #list li:last-child{
+            border:0;
+        }
+        #list li:hover{
+            background: #1ca1e2;
+        }
+    </style>
+</head>
+<body>
+    <ul id="list">
+        <li>新建</li>
+        <li>复制</li>
+        <li>粘贴</li>
+        <li>剪切</li>
+        <li>属性</li>
+    </ul>
+
+    <script>
+        let oList = document.getElementById('list');
+        document.oncontextmenu = (ev) => {
+            let x = ev.pageX;
+            let y = ev.pageY;
+            oList.style.left = x + 'px';
+            oList.style.top = y + 'px';
+            oList.style.display = 'block';
+            return false;
+        }
+        document.onclick = () => {
+            oList.style.display = 'none';
+        }
+    </script>
+</body>
+</html>

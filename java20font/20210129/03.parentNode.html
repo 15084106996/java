@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <ul>
+        <li>1.今天天气不错......<a href="javascript:;">删除</a></li>
+        <li>2.今天天气不错......<a href="javascript:;">删除</a></li>
+        <li>3.今天天气不错......<a href="javascript:;">删除</a></li>
+        <li>4.今天天气不错......<a href="javascript:;">删除</a></li>
+        <li>5.今天天气不错......<a href="javascript:;">删除</a></li>
+        <li>6.今天天气不错......<a href="javascript:;">删除</a></li>
+        <li>7.今天天气不错......<a href="javascript:;">删除</a></li>
+    </ul>
+
+    <script>
+        let oAs = document.getElementsByTagName('a');
+        let oList = document.getElementsByTagName('ul')[0];
+
+        for (let oA of oAs) {
+            oA.onclick = () => {
+                oList.removeChild(oA.parentNode)
+            }
+        }
+    </script>
+</body>
+</html>

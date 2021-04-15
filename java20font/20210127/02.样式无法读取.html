@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <!--
+        内部样式可写不可读
+    -->
+    <script>
+        let oBox = document.getElementById('box');
+
+        console.log(getComputedStyle(oBox)["width"])
+
+        // console.log(oBox.style.width)
+        // oBox.style.width = '300px';
+    </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <!--
+        生命周期：从出生到死亡的过程
+    -->
+    <div id="app">
+        <ul>
+            <li v-for="(item,index) in userList">{{item.id}},{{item.username}}</li>
+        </ul>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                userList : []
+            },
+            methods:{
+                // 查询数据方法
+                findUsers() {
+                    this.userList = [
+                        {id:1001,username:'tom'},
+                        {id:1002,username:'lucy'},
+                        {id:1003,username:'mike'},
+                        {id:1004,username:'bob'},
+                    ];
+                },
+            },
+            mounted() {
+                this.findUsers();
+            }
+        })
+    </script>
+</body>
+</html>

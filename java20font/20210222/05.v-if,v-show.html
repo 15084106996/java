@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app">
+        <p>
+            TOM,性别
+            <span v-if="gender">女</span>
+            <span v-else>男</span>
+        </p>
+        <hr>
+        <p>
+            TOM,性别
+            <span v-if="!gender">男</span>
+            <span v-if="gender">女</span>
+        </p>
+        <p>
+            TOM,性别
+            <span v-show="!gender">男</span>
+            <span v-show="gender">女</span>
+        </p>
+        <!--
+            v-if 如果条件不成立，元素是不会在页面中存在,本质上就是不渲染元素，有切换消耗
+            v-show 如果条件不成立，元素也会在页面中存在，但是CSS的display是none，有渲染消耗
+        -->
+        <p v-if="grade < 60">不及格</p>
+        <p v-else-if="grade > 90">优秀</p>
+        <p v-else>及格</p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                gender : true,
+                grade:77
+            }
+        })
+    </script>
+</body>
+</html>

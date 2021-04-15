@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box {
+            display: flex;
+        }
+        #box div {
+            width: 100px;
+            height: 100px;
+            border:1px solid #000;
+            float: left;
+            margin: 5px 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <button>red</button>
+    <button>yellow</button>
+    <button>blue</button>
+    <button>green</button>
+    <input type="button" value="清空红色">
+    <div id="box">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <script src="js/jquery.js"></script>
+    <script>
+        let text = null;
+        $('button').click(function(){
+            text = $(this).html();
+        })
+
+        $('#box div').click(function () {
+            $(this).css('background', text);
+        })
+
+        $('input').click(function () {
+            $('#box div[style*="red"]').css('background','#fff')
+        })
+    </script>
+</body>
+</html>

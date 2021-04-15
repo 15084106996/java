@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app">
+        <p>{{num}},{{test()}},{{com}}</p>
+        <p>{{num}},{{test()}},{{com}}</p>
+        <p>{{num}},{{test()}},{{com}}</p>
+        <p>{{num}},{{test()}},{{com}}</p>
+        <p>{{num}},{{test()}},{{com}}</p>
+        <p>{{num}},{{test()}},{{com}}</p>
+    </div>
+    <!--
+        methods : 调用几次，就执行几次
+        computed : 当页面用到计算属性时，如果计算属性没有改变过，内部其实只执行过一次函数
+    -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        const vm = new Vue({
+            el : '#app',
+            data : {
+                num : 100,
+            },
+            methods:{
+                test() {
+                    // ....
+                    return "java20";
+                }
+            },
+            computed :{
+                com() {
+                    // ....
+                    return "java20 Sec";
+                }
+            }
+        })
+    </script>
+</body>
+</html>

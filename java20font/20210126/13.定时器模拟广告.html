@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background: red;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+
+    <script>
+        let oBox = document.getElementById('box');
+        setTimeout(() => {
+            oBox.style.display = 'block';
+            setTimeout(() => {
+                oBox.style.display = 'none';
+            },3000)
+        }, 2000);
+    </script>
+</body>
+</html>

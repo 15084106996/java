@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="(item,index) in arr">{{item}},{{index}}</li>
+        </ul>
+        <hr>
+        <ul>
+            <li v-for="(item,index) in userList" :key="item.id">
+                {{item.id}},
+                {{item.username}},
+                {{item.gender}},
+                <span v-if="item.gender">女</span>
+                <span v-else>男</span>
+            </li>
+        </ul>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                arr : [101,102,103,104,105],
+                userList:[
+                    {id:1001,username:'tom',gender:false},
+                    {id:1002,username:'lucy',gender:true},
+                    {id:1003,username:'ella',gender:true},
+                    {id:1004,username:'bob',gender:false},
+                ]
+            }
+        })
+    </script>
+</body>
+</html>

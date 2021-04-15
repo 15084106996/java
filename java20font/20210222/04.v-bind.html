@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app">
+        <p id="msg" :a="msg">1111</p>
+        <p v-bind:id="msg">2222</p>
+        <p :id="msg">3333</p>
+        <p :id="'msg'">4444</p>
+        <p :style="str">5555</p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                msg : 'hello',
+                str : 'color:red'
+            }
+        })
+    </script>
+</body>
+</html>

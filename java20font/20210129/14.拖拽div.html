@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background: #1887bd;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+        let oBox = document.getElementById('box');
+        oBox.onmousedown = (ev) => {
+            let x = ev.pageX;
+            let y = ev.pageY;
+            let disX = x - oBox.offsetLeft;
+            let disY = y - oBox.offsetTop;
+            document.onmousemove = (event) => {
+                let x2 = event.pageX;
+                let y2 = event.pageY;
+                oBox.style.left = x2 - disX + 'px';
+                oBox.style.top = y2 - disY + 'px';
+            }
+            document.onmouseup = () => {
+                document.onmousemove = null;
+            }
+        }
+    </script>
+</body>
+</html>

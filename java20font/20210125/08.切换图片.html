@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            padding:0;
+            margin:0;
+        }
+        a {
+            width: 50px;
+            line-height: 50px;
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            background: #000;
+            opacity: 0.5;
+            text-align: center;
+            border:5px solid #a5a5a5;
+            border-radius: 50%;
+            position: absolute;
+            top:140px;
+        }
+        a:hover{
+            opacity: 0.7;
+            transform: scale(1.1);/*缩放比例*/
+            transition: 0.3s;/*过渡时间*/
+        }
+        #box,#box1,#box2 {
+            width: 640px;
+            height: 340px;
+            border: 10px solid #a5a5a5;
+            margin: 100px auto;
+            position: relative;
+        }
+        .leftBtn{
+            left:20px;
+        }
+        .rightBtn{
+            right:20px;
+        }
+        .bg{
+            width: 100%;
+            height: 30px;
+            background: #000;
+            opacity: 0.7;
+            position: absolute;
+        }
+        .topBg{
+            top:0;
+        }
+        .bottomBg{
+            bottom:0;
+        }
+        .text{
+            width: 100%;
+            line-height: 30px;
+            color: #fff;
+            font-weight: bold;
+            text-align: center;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <img class="imgContent" src="" alt="">
+        <a href="javascript:;" class="leftBtn"><</a>
+        <a href="javascript:;" class="rightBtn">></a>
+        <p class="bg topBg"></p>
+        <p class="bg bottomBg"></p>
+        <p class="text bottomBg"></p>
+        <p class="text topBg"></p>
+    </div>
+
+    <div id="box1">
+        <img class="imgContent" src="" alt="">
+        <a href="javascript:;" class="leftBtn"><</a>
+        <a href="javascript:;" class="rightBtn">></a>
+        <p class="bg topBg"></p>
+        <p class="bg bottomBg"></p>
+        <p class="text bottomBg"></p>
+        <p class="text topBg"></p>
+    </div>
+
+    <div id="box2">
+        <img class="imgContent" src="" alt="">
+        <a href="javascript:;" class="leftBtn"><</a>
+        <a href="javascript:;" class="rightBtn">></a>
+        <p class="bg topBg"></p>
+        <p class="bg bottomBg"></p>
+        <p class="text bottomBg"></p>
+        <p class="text topBg"></p>
+    </div>
+
+
+    <script>
+        let oBox = document.getElementById('box');
+        let arrImg = ['./image/1.jpg','./image/2.jpg','./image/3.jpg','./image/4.jpg','./image/2.jpg'];
+        let arrText = ['NBA球星代孕丑闻','尤文图斯集体代孕','C罗代孕良好','15号球员代孕失败','尤文图斯集体代孕失败'];
+
+
+        let oBox1 = document.getElementById('box1');
+        let arrImg1 = ['./image/1.jpg','./image/2.jpg','./image/3.jpg'];
+        let arrText1 = ['NBA球星代孕丑闻1','尤文图斯集体代孕1','C罗代孕良好1'];
+
+        let oBox2 = document.getElementById('box2');
+        let arrImg2 = ['./image/1.jpg','./image/2.jpg'];
+        let arrText2 = ['NBA球星代孕丑闻2','尤文图斯集体代孕2'];
+
+
+        let tabOBox = (obj,arrImg,arrText) => {
+            let oImg = obj.getElementsByClassName('imgContent')[0];
+            let oText = obj.getElementsByClassName('text')[0];
+            let oNum = obj.getElementsByClassName('text')[1];
+
+            obj.index = 0;
+
+            let initPage = () =>{
+                oImg.src = arrImg[obj.index];
+                oText.innerHTML = arrText[obj.index];
+                oNum.innerHTML = obj.index + 1 + '/' + arrImg.length;
+            }
+            initPage();
+
+            let oPrev = obj.getElementsByClassName('leftBtn')[0];
+            let oNext = obj.getElementsByClassName('rightBtn')[0];
+
+            oPrev.onclick = () => {
+                obj.index--;
+                if (obj.index < 0) {
+                    obj.index = arrImg.length - 1;
+                }
+                initPage();
+            }
+            oNext.onclick = () => {
+                obj.index++;
+                if (obj.index >= arrImg.length) {
+                    obj.index = 0;
+                }
+                initPage();
+            }
+        }
+
+        tabOBox(oBox,arrImg,arrText);
+        tabOBox(oBox1,arrImg1,arrText1);
+        tabOBox(oBox2,arrImg2,arrText2);
+
+
+
+    </script>
+</body>
+</html>

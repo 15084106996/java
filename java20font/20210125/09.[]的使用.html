@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <button onclick="tabDiv()">切换</button>
+    <div id="box"></div>
+    <script>
+        let oBox = document.getElementById('box');
+        let tabDiv = () => {
+            oBox.style.display = 'none';
+            // oBox["style"].display = 'none';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn" type="button" onclick="hide()">按钮</button>
+    <br><br>
+    <div id="box"></div>
+
+
+    <script>
+        let oBox = document.getElementById('box');
+        let onOff = true;
+        function hide() {
+            if (onOff) {
+                oBox.style.display = 'none';
+            } else{
+                oBox.style.display = 'block';
+            }
+            onOff = !onOff;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>班级首页</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="../layui/css/layui.css">
+</head>
+<body>
+<!-- 头部 -->
+<header>
+    <ul class="layui-nav">
+        <li class="layui-nav-item"><h3>Java20签到打卡系统</h3></li>
+        <li class="layui-nav-item">
+            <a id="nickname" href="javascript:;">牵牛</a>
+            <dl class="layui-nav-child myinfo">
+                <dd><a href="">用户中心</a></dd>
+                <dd><a href="javascript:;" id="logout">用户退出</a></dd>
+            </dl>
+        </li>
+    </ul>
+</header>
+<!--  主体  -->
+<div id="content">
+    <aside>
+        <ul class="layui-nav layui-nav-tree layui-inline" lay-filter="demo" style="margin-right: 10px;">
+            <li style="background: #009688;" class="layui-nav-item sign">
+                <a style="color:#fff;" href="javascript:;">打卡签到</a>
+            </li>
+            <li style="background: #009688;" class="layui-nav-item signInfo">
+                <a style="color:#fff;" href="javascript:;">签到信息</a>
+            </li>
+        </ul>
+    </aside>
+    <div class="divContent">
+        <div class="sign">
+            <div class="signHeader">
+                <button type="button" class="layui-btn layui-btn-normal" id="signBtn">打卡签到</button>
+                <h3>考勤信息 <span class="box" style="color:#009688;"></span></h3>
+            </div>
+            <div class="personalInfo">
+                <!--        个人打卡信息部分            -->
+                <h3>考勤历史（<span id="history"></span>次）</h3>
+                <div style="display: flex;flex-wrap: wrap;">
+                    <div id="personList"></div>
+                    <!--echarts图表-->
+                    <div id="main"></div>
+                    <div id="page"></div>
+                </div>
+            </div>
+        </div>
+        <div class="signInfo">
+            <div class="signHeader">
+                <h3>考勤信息 <span class="box" style="color:#009688;"></span></h3>
+            </div>
+            <div class="personalInfo">
+                <!--        个人打卡信息部分        -->
+                456
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../layui/layui.js"></script>
+<script src="./js/echarts.min.js"></script>
+<script>
+    let userinfo = window.sessionStorage.getItem('userinfo');
+    let logout = document.getElementById('logout');
+    let i = 0;
+
+    // 个人打卡信息数据
+    let personList = [
+        {date: '2021.02.01', time: '08:11'},
+        {date: '2021.01.31', time: '09:27'},
+        {date: '2021.01.30', time: '10:27'},
+        {date: '2021.01.29', time: '06:30'},
+        {date: '2021.01.28', time: '07:11'},
+        {date: '2021.01.27', time: '07:58'},
+        {date: '2021.01.26', time: '07:52'},
+        {date: '2021.01.25', time: '08:22'},
+        {date: '2021.01.24', time: '08:32'},
+        {date: '2021.01.23', time: '09:05'},
+        {date: '2021.01.22', time: '11:36'},
+        {date: '2021.01.21', time: '09:00'},
+        {date: '2021.01.20', time: '08:29'},
+        {date: '2021.01.19', time: '07:59'},
+    ]
+
+    // 判断是否有登录用户
+    if (userinfo == null) {
+        window.location.href = './login.html';
+    } else {
+        let user = JSON.parse(userinfo);
+        document.getElementById('nickname').innerHTML = user.nickname;
+        if (user.userType == 1) {
+            document.getElementsByClassName('sign')[0].style.display = 'none';
+            document.getElementsByClassName('sign')[1].style.display = 'none';
+            i = 1;
+        } else {
+            document.getElementsByClassName('signInfo')[0].style.display = 'none';
+            document.getElementsByClassName('signInfo')[1].style.display = 'none';
+            // 初始化列表
+            personList.forEach((item, index) => {
+                document.getElementById('personList').innerHTML += `<div style="width: 100%;margin: 10px 0;">
+                            <div style="background:#e2e6ed;" class="layui-card">
+                                <div class="layui-card-header" style="font-size: 16px;font-weight: bold">${item.date}</div>
+                                <div class="layui-card-body">
+                                    ${item.date} ${item.time} 打卡签到
+                                </div>
+                            </div>
+                        </div>`
+            });
+            // 初始化历史签到次数
+            document.getElementById('history').innerHTML = personList.length;
+        }
+    }
+    layui.use(['element', 'layer', 'laypage'], function () {
+        let element = layui.element;
+        let layer = layui.layer;
+        let laypage = layui.laypage;
+        // 用户退出按钮事件
+        logout.onclick = () => {
+            layer.open({
+                content: '是否确认退出'
+                , btn: ['退出', '取消']
+                , yes: function (index, layero) {
+                    window.sessionStorage.removeItem('userinfo');
+                    window.location.href = './login.html';
+                }
+                , btn2: function (index, layero) {
+                }
+                , cancel: function () {
+                }
+            });
+        }
+
+        //总页数大于页码总数
+        laypage.render({
+            elem: 'page'
+            , count: personList.length //数据总数
+            , limit: 7
+            , jump: function (obj) {
+                document.getElementById('personList').innerHTML = '';
+                for (let j = (obj.curr - 1) * 7; j <= (obj.curr - 1) * 7 + 6; j++) {
+                    if (personList[j]) {
+                        document.getElementById('personList').innerHTML += `<div style="width: 100%;margin: 10px 0;">
+                            <div style="background:#e2e6ed;" class="layui-card">
+                                <div class="layui-card-header" style="font-size: 16px;font-weight: bold">${personList[j].date}</div>
+                                <div class="layui-card-body">
+                                    ${personList[j].date} ${personList[j].time} 打卡签到
+                                </div>
+                            </div>
+                        </div>`;
+                    }
+                }
+            }
+        });
+
+        // 点击签到按钮
+        let signBtn = document.getElementById('signBtn');
+        signBtn.onclick = () => {
+            let bool = true;
+            let time = new Date();
+            let year = time.getFullYear();
+            let month = (time.getMonth() + 1 + "").padStart(2, "0");
+            let date = (time.getDate() + "").padStart(2, "0");
+            let hour = (time.getHours() + "").padStart(2, "0");
+            let min = (time.getMinutes() + "").padStart(2, "0");
+            let str = `${year}.${month}.${date}`;
+            let temp = `${hour}:${min}`;
+            personList.forEach((item, index) => {
+                if (item.date == str) {
+                    alert('今天已经打卡');
+                    bool = false;
+                }
+            })
+            if (bool) {
+                let info = {
+                    date: str,
+                    time: temp
+                }
+                // 添加数据
+                personList.unshift(info);
+                showEchars();
+                // 更新分页
+                laypage.render({
+                    elem: 'page'
+                    , count: personList.length //数据总数
+                    , limit: 7
+                    , jump: function (obj) {
+                        document.getElementById('personList').innerHTML = '';
+                        for (let j = (obj.curr - 1) * 7; j <= (obj.curr - 1) * 7 + 6; j++) {
+                            if (personList[j]) {
+                                document.getElementById('personList').innerHTML += `<div style="width: 100%;margin: 10px 0;">
+                                        <div style="background:#e2e6ed;" class="layui-card">
+                                            <div class="layui-card-header" style="font-size: 16px;font-weight: bold">${personList[j].date}</div>
+                                            <div class="layui-card-body">
+                                                ${personList[j].date} ${personList[j].time} 打卡签到
+                                            </div>
+                                        </div>
+                                    </div>`;
+                            }
+                        }
+                    }
+                });
+                // 更新次数
+                document.getElementById('history').innerHTML = personList.length;
+                document.getElementById('personList').innerHTML = '';
+                personList.forEach((item, index) => {
+                    if (index <= 6) {
+                        document.getElementById('personList').innerHTML += `<div style="width: 100%;margin: 10px 0;">
+                            <div style="background:#e2e6ed;" class="layui-card">
+                                <div class="layui-card-header" style="font-size: 16px;font-weight: bold">${item.date}</div>
+                                <div class="layui-card-body">
+                                    ${item.date} ${item.time} 打卡签到
+                                </div>
+                            </div>
+                        </div>`;
+                    }
+                })
+            }
+        }
+    });
+
+    // 时间部分
+    let oBox = document.getElementsByClassName('box')[i];
+    let timeMethod = () => {
+        setInterval(() => {
+            times();
+        }, 1000)
+    }
+    let times = () => {
+        let time = new Date();
+        let year = time.getFullYear();
+        let month = (time.getMonth() + 1 + "").padStart(2, "0");
+        let date = (time.getDate() + "").padStart(2, "0");
+        let hour = (time.getHours() + "").padStart(2, "0");
+        let min = (time.getMinutes() + "").padStart(2, "0");
+        let sec = (time.getSeconds() + "").padStart(2, "0");
+        oBox.innerHTML = `${year}-${month}-${date} ${hour}:${min}:${sec}`;
+    };
+    times();
+    timeMethod();
+
+    // echars图表
+    // 基于准备好的dom，初始化echarts实例
+    let showEchars = ()=>{
+        let normal = 0;
+        let late = 0;
+        personList.forEach((item,index) => {
+            if (parseInt(item.time.substr(0, 2)) >= 9) {
+                late++;
+            }else{
+                normal++;
+            }
+        })
+        let myChart = echarts.init(document.getElementById('main'));
+        // 指定图表的配置项和数据
+        let option = {
+            tooltip: {
+                trigger: 'item'
+            },
+            legend: {
+                top: '5%',
+                left: 'center'
+            },
+            series: [
+                {
+                    name: '打卡具体信息',
+                    type: 'pie',
+                    radius: ['40%', '70%'],
+                    avoidLabelOverlap: false,
+                    label: {
+                        show: false,
+                        position: 'center'
+                    },
+                    emphasis: {
+                        label: {
+                            show: true,
+                            fontSize: '40',
+                            fontWeight: 'bold'
+                        }
+                    },
+                    labelLine: {
+                        show: false
+                    },
+                    data: [
+                        {value: normal, name: '正常打卡'},
+                        {value: late, name: '迟到'}
+                    ]
+                }
+            ]
+        };
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    }
+    showEchars();
+</script>
+</body>
+</html>

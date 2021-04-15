@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        ul{
+            padding:0;
+            list-style: none;
+        }
+        h3{
+            margin: 0;
+            font-weight: normal;
+            color: #fff;
+            background: #74a400;
+            font-size: 16px;
+            line-height: 30px;
+            text-indent: 1em;
+            cursor: pointer;
+        }
+        #list{
+            width: 200px;
+            margin:100px auto;
+            border:1px solid #e5e5e5;
+        }
+        #list ul li{
+            line-height: 28px;
+            text-indent: 1em;
+            border-top: 1px solid #e5e5e5;
+            cursor: pointer;
+        }
+        #list ul li:hover{
+            background: #ffffcc;
+        }
+    </style>
+</head>
+<body>
+    <ul id="list">
+        <li>
+           <h3>我的好友</h3>
+           <ul>
+               <li>王一一</li>
+               <li>李文华</li>
+               <li>高发展</li>
+           </ul>
+        </li>
+        <li>
+            <h3>我的同事</h3>
+            <ul>
+                <li>王一一</li>
+                <li>李文华</li>
+                <li>高发展</li>
+            </ul>
+        </li>
+        <li>
+            <h3>我的同学</h3>
+            <ul>
+                <li>王一一</li>
+                <li>李文华</li>
+                <li>高发展</li>
+            </ul>
+        </li>
+    </ul>
+
+    <script>
+        let oList = document.getElementById('list');
+        let oH3 = oList.getElementsByTagName('h3');
+
+        for (let h3 of oH3) {
+            h3.onOff = true;
+            h3.onclick = () => {
+                if (h3.onOff) {
+                    h3.nextElementSibling.style.display = 'none';
+                }
+                else{
+                    h3.nextElementSibling.style.display = 'block';
+                }
+                h3.onOff = !h3.onOff;
+            }
+        }
+
+        // for (let i = 0; i < oH3.length; i++) {
+        //     let h3 = oH3[i];
+        //     h3.onOff = true;
+        //     h3.onclick = () => {
+        //         if (h3.onOff) {
+        //             h3.nextElementSibling.style.display = 'none';
+        //         }
+        //         else{
+        //             h3.nextElementSibling.style.display = 'block';
+        //         }
+        //         h3.onOff = !h3.onOff;
+        //     }
+        // }
+    </script>
+</body>
+</html>

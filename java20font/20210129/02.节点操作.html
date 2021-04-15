@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+    <script>
+        let oUl = document.getElementsByTagName('ul')[0];
+        // oUl.children[0].style.background = 'red';
+        oUl.firstElementChild.style.background = 'green';
+        oUl.firstElementChild.nextElementSibling.style.background = 'blue';
+
+        oUl.lastElementChild.style.background = 'yellow';
+        oUl.lastElementChild.previousElementSibling.style.background = 'orange';
+    </script>
+
+</body>
+</html>

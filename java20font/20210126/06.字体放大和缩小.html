@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box {
+            width: 350px;
+            padding: 8px;
+            border: 10px solid #666;
+            background: #a5c86e;
+        }
+        .setRed{
+             background: #ff4e22 !important;
+             color: yellow;
+         }
+        .setGreen{
+            background: green !important;
+            color: #fff !important;
+        }
+    </style>
+</head>
+<body>
+    <button onclick="smaller()">A-</button>
+    <button onclick="larger()">A+</button>
+    <button onclick="setRed()">变红</button>
+    <button onclick="setGreen()">变绿</button>
+    <br><br>
+    <div id="box">
+        2021年新年伊始，让无数军事爱好者牵挂的轰-20突然又有了新动向。
+        在空军新的宣传片中，出现了一架停放在机库中，被幕布遮盖得严严实实的飞机，
+        其飞翼式布局的外形轮廓与2018年中航工业宣传片中的“神秘飞机”高度相似，
+        而在随后的一个镜头中，飞行员头盔的前挡风玻璃上，显示出这架飞机的清晰倒影。这不就是传说中的轰-20吗？
+    </div>
+
+    <script>
+        let oBox = document.getElementById('box');
+        let font = 16;
+        let larger = () => {
+            if (font < 24) {
+                font += 2;
+                oBox.style.fontSize = font + 'px';
+            }
+        }
+
+        let smaller = () => {
+            if (font > 12) {
+                font -= 2;
+                oBox.style.fontSize = font + 'px';
+            }
+        }
+
+        let setRed = () => {
+            oBox.className = 'setRed'
+        }
+
+        let setGreen = () => {
+            oBox.className = 'setGreen'
+        }
+    </script>
+</body>
+</html>

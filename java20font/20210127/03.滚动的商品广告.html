@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        ul{
+            width: 100%;
+            padding:0;
+            margin: 0;
+            list-style: none;
+            position: absolute;
+            top:20px;
+        }
+        ul li {
+            width: 100%;
+            height: 100px;
+            display: flex;
+            justify-content: space-around;
+            box-sizing: border-box;
+            border-bottom: 1px solid #666666;
+            padding:5px 0;
+        }
+        ul li img {
+            width: 80px;
+            height: 80px;
+        }
+        #box {
+            width: 200px;
+            height: 440px;
+            border:10px solid #e9e9e9;
+            margin: 100px auto;
+            position: relative;
+            overflow: hidden;
+        }
+        .btn{
+            margin: 0;
+            width: 100%;
+            text-align: center;
+            background: #a7a7a7;
+            color: #fff;
+            font-weight: bold;
+            line-height: 20px;
+            position: absolute;
+            cursor: pointer;
+            user-select: none;
+        }
+        .top{
+            top:0;
+            z-index: 1;
+        }
+        .bottom{
+            bottom:0;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <p class="btn top">↑</p>
+        <ul>
+            <li>
+                <div>翻新台式机</div>
+                <img src="//gw.alicdn.com/bao/uploaded/i3/75207623/TB2lPCxvcyYBuNkSnfoXXcWgVXa_!!75207623.jpg_500x500q90.jpg_.webp" alt="">
+            </li>
+            <li>
+                <div>翻新台式机</div>
+                <img src="//gw.alicdn.com/bao/uploaded/i1/2452845552/O1CN01gLIqpb1qsrWhIAYZp_!!0-item_pic.jpg_500x500q90.jpg_.webp" alt="">
+            </li>
+            <li>
+                <div>翻新台式机</div>
+                <img src="//gw.alicdn.com/bao/uploaded/i2/1748418306/TB1732vcQfb_uJkSmRyXXbWxVXa_!!0-item_pic.jpg_500x500q90.jpg_.webp" alt="">
+            </li>
+            <li>
+                <div>翻新台式机</div>
+                <img src="//gw.alicdn.com/bao/uploaded/i3/75207623/TB2lPCxvcyYBuNkSnfoXXcWgVXa_!!75207623.jpg_500x500q90.jpg_.webp" alt="">
+            </li>
+            <li>
+                <div>翻新台式机</div>
+                <img src="//gw.alicdn.com/bao/uploaded/i3/75207623/TB2lPCxvcyYBuNkSnfoXXcWgVXa_!!75207623.jpg_500x500q90.jpg_.webp" alt="">
+            </li>
+            <li>
+                <div>翻新台式机</div>
+                <img src="//gw.alicdn.com/bao/uploaded/i3/75207623/TB2lPCxvcyYBuNkSnfoXXcWgVXa_!!75207623.jpg_500x500q90.jpg_.webp" alt="">
+            </li>
+            <li>
+                <div>翻新台式机</div>
+                <img src="//gw.alicdn.com/bao/uploaded/i3/75207623/TB2lPCxvcyYBuNkSnfoXXcWgVXa_!!75207623.jpg_500x500q90.jpg_.webp" alt="">
+            </li>
+            <li>
+                <div>翻新台式机</div>
+                <img src="//gw.alicdn.com/bao/uploaded/i3/75207623/TB2lPCxvcyYBuNkSnfoXXcWgVXa_!!75207623.jpg_500x500q90.jpg_.webp" alt="">
+            </li>
+        </ul>
+        <p class="btn bottom">↓</p>
+    </div>
+
+    <script>
+        let oBox = document.getElementById('box');
+        let toBtn = oBox.getElementsByTagName('p')[0];
+        let boBtn = oBox.getElementsByTagName('p')[1];
+        let oList = oBox.getElementsByTagName('ul')[0];
+
+        let timer = null;
+
+        toBtn.onmousedown = () =>{
+            timer = setInterval(() => {
+                let dis = parseInt(getComputedStyle(oList)['top']);
+                dis -= 10;
+                if (dis <= -380) {
+                    dis = -380;
+                    clearInterval(timer);
+                }
+                oList.style.top = dis + 'px';
+            },30)
+        }
+
+        boBtn.onmousedown = () =>{
+            timer = setInterval(() => {
+                let dis = parseInt(getComputedStyle(oList)['top']);
+                dis += 10;
+                if (dis >= 20) {
+                    dis = 20;
+                }
+                oList.style.top = dis + 'px';
+            },30)
+        }
+
+        document.onmouseup = () => {
+            clearInterval(timer);
+        }
+    </script>
+</body>
+</html>

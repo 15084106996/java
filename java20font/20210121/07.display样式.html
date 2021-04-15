@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        ul {
+            padding: 0;
+            list-style: none;
+        }
+        h4{
+            margin: 0;
+            border-bottom: 1px solid orange;
+        }
+        .list {
+            width: 70px;
+            text-align: center;
+            border: 1px solid orange;
+            border-bottom: 0;
+            cursor: pointer;
+        }
+        .list:hover ul{
+            display: block;
+        }
+        .list ul li{
+            border-bottom: 1px solid orange;
+        }
+        .list ul li:hover{
+            background: antiquewhite;
+        }
+        .list ul{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <ul class="list">
+        <li>
+            <h4>微博</h4>
+            <ul>
+               <li>微信</li>
+               <li>私信</li>
+               <li>@我</li>
+            </ul>
+        </li>
+    </ul>
+</body>
+</html>

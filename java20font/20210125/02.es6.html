@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        // let num;
+        // console.log(num);
+        // num = 200;
+        // const num1 = 300;
+        // undefined
+        // function add() {
+        //     for (let i = 0; i < arguments.length; i++) {
+        //
+        //     }
+        // }
+        //
+        // add(1,2);
+
+        let num = 100;
+        let str = "hello";
+        let bool = true;
+        let arr = [1,"hello",true];
+        // json
+        let user = {
+            username : "tom",
+            age : 13,
+            gender : false
+        }
+        // console.log(arr[1]);
+        // console.log(user.username);
+
+        let userList = [
+            {username:"tom",age:12,gender:false,grade:77},
+            {username:"lucy",age:13,gender:true,grade:78},
+            {username:"ella",age:14,gender:false,grade:74},
+            {username:"bob",age:15,gender:true,grade:76},
+        ];
+
+        /*
+        *   for(User item : userList){
+        *       sout(user.getUsername())
+        *   }
+        * */
+        let sum = 0;
+        userList.forEach((item,index) => {
+            sum += item.grade;
+        })
+        console.log(sum/userList.length);
+    </script>
+</body>
+</html>

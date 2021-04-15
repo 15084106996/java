@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            padding:0;
+            margin:0;
+        }
+        a {
+            width: 50px;
+            line-height: 50px;
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            background: #000;
+            opacity: 0.5;
+            text-align: center;
+            border:5px solid #a5a5a5;
+            border-radius: 50%;
+            position: absolute;
+            top:140px;
+        }
+        a:hover{
+            opacity: 0.7;
+            transform: scale(1.1);/*缩放比例*/
+            transition: 0.3s;/*过渡时间*/
+        }
+        #box{
+            width: 640px;
+            height: 340px;
+            border: 10px solid #a5a5a5;
+            margin: 100px auto;
+            position: relative;
+            overflow: hidden;
+        }
+        .leftBtn{
+            left:20px;
+        }
+        .rightBtn{
+            right:20px;
+        }
+        /*imgContent*/
+        .imgContent{
+            width: 3200px;
+            height: 100%;
+            font-size: 0;
+            position: absolute;
+        }
+        /*text*/
+        .text{
+            width: 100%;
+            position: absolute;
+            top:340px;
+        }
+        .text div{
+            position: absolute;
+            top:0px;
+            background: #000;
+            color: #fff;
+            opacity: 0.8;
+            box-sizing: border-box;
+            padding:5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <div class="imgContent">
+            <img src="./image/1.jpg" alt="">
+            <img src="./image/2.jpg" alt="">
+            <img src="./image/3.jpg" alt="">
+            <img src="./image/4.jpg" alt="">
+            <img src="./image/1.jpg" alt="">
+        </div>
+        <div class="text">
+            <div>
+                <h3>第1集</h3>
+                <p>
+                    《离婚律师》精彩看点： 末代剧王驾到，1.3亿超高投资无出其右，
+                    姚晨、吴秀波顶级大牌组合，今后可遇不可求。 《离婚律师》剧情梗概：
+                    事业有成的大律师池海东在自己的离婚案中输给了妻子的代理律师罗鹂。
+                    不相信爱情的两人， 阴错阳差之下常常代理同一个离婚案件...
+                </p>
+            </div>
+            <div>
+                <h3>第2集</h3>
+                <p>
+                    《离婚律师》精彩看点： 末代剧王驾到，1.3亿超高投资无出其右，
+                    姚晨、吴秀波顶级大牌组合，今后可遇不可求。 《离婚律师》剧情梗概：
+                    事业有成的大律师池海东在自己的离婚案中输给了妻子的代理律师罗鹂。
+                    不相信爱情的两人， 阴错阳差之下常常代理同一个离婚案件...
+                </p>
+            </div>
+            <div>
+                <h3>第3集</h3>
+                <p>
+                    《离婚律师》精彩看点： 末代剧王驾到，1.3亿超高投资无出其右，
+                    姚晨、吴秀波顶级大牌组合，今后可遇不可求。 《离婚律师》剧情梗概：
+                    事业有成的大律师池海东在自己的离婚案中输给了妻子的代理律师罗鹂。
+                    不相信爱情的两人， 阴错阳差之下常常代理同一个离婚案件...
+                </p>
+            </div>
+            <div>
+                <h3>第4集</h3>
+                <p>
+                    《离婚律师》精彩看点： 末代剧王驾到，1.3亿超高投资无出其右，
+                    姚晨、吴秀波顶级大牌组合，今后可遇不可求。 《离婚律师》剧情梗概：
+                    事业有成的大律师池海东在自己的离婚案中输给了妻子的代理律师罗鹂。
+                    不相信爱情的两人， 阴错阳差之下常常代理同一个离婚案件...
+                </p>
+            </div>
+            <div>
+                <h3>第1集</h3>
+                <p>
+                    《离婚律师》精彩看点： 末代剧王驾到，1.3亿超高投资无出其右，
+                    姚晨、吴秀波顶级大牌组合，今后可遇不可求。 《离婚律师》剧情梗概：
+                    事业有成的大律师池海东在自己的离婚案中输给了妻子的代理律师罗鹂。
+                    不相信爱情的两人， 阴错阳差之下常常代理同一个离婚案件...
+                </p>
+            </div>
+        </div>
+        <a href="javascript:;" class="leftBtn"><</a>
+        <a href="javascript:;" class="rightBtn">></a>
+    </div>
+
+    <script src="js/myjs.js"></script>
+    <script>
+        let oBox = document.getElementById('box');
+        let oPrev = oBox.getElementsByTagName('a')[0];
+        let oNext = oBox.getElementsByTagName('a')[1];
+        let oDiv = oBox.getElementsByTagName('div')[0];
+        let oText = oBox.getElementsByClassName('text')[0];
+        let aDivs = oText.getElementsByTagName('div');
+
+        let index = 0;
+        let bool = true;
+
+        doMove(aDivs[index],'top',10,-115);
+
+        oNext.onclick = () => {
+            if (!bool) {
+                return;
+            }
+            bool = false;
+            doMove(aDivs[index],'top',10,0);
+            index++;
+            if (index >= 5) {
+                index = 1;
+                oDiv.style.left = 0;
+            }
+            doMove(oDiv, 'left', 30, index*-640,()=>{
+                doMove(aDivs[index],'top',10,-115);
+                bool = true;
+            });
+        }
+
+        oPrev.onclick = () => {
+            if (!bool) {
+                return;
+            }
+            bool = false;
+            doMove(aDivs[index],'top',10,0);
+            index--;
+            if (index < 0) {
+                index = 3;
+                oDiv.style.left = '-2560px';
+            }
+            doMove(oDiv, 'left', 30, index*-640,()=>{
+                doMove(aDivs[index],'top',10,-115);
+                bool = true;
+            });
+        }
+    </script>
+</body>
+</html>

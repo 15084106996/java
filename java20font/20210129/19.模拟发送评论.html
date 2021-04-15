@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <input type="text" id="text">
+    <ul id="list"></ul>
+
+    <script>
+        let oText = document.getElementById('text');
+        let oList = document.getElementById('list');
+        document.onkeydown = (ev) => {
+            if (ev.key == 'Enter' && ev.ctrlKey) {
+                oList.innerHTML += `<li>${oText.value}</li>`;
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <input type="text" id="text">
+    <div>
+        胡歌拥有 <span id="box">0</span> 粉丝
+    </div>
+    <script src="../20210203/js/jquery.js"></script>
+    <script>
+        // $('#text').on('input',function () {
+        //     $('#box').html($('#text').val())
+        // })
+        let oText = document.getElementById('text');
+        let oBox = document.getElementById('box');
+        oText.oninput = () => {
+            oBox.innerHTML = oText.value;
+        }
+    </script>
+</body>
+</html>

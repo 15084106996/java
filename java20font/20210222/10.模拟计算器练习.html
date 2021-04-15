@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model.number="firNum">
+        <select v-model="flag">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">x</option>
+            <option value="/">÷</option>
+        </select>
+        <input type="text" v-model.number="secNum">
+        <button @click="account">=</button>
+        <input type="text" v-model="result">
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                firNum : '',
+                secNum: '',
+                result: '',
+                flag : '+'
+            },
+            methods:{
+                account() {
+                    this.result = eval(this.firNum + this.flag + this.secNum);
+                    // if (this.flag == '+') {
+                    //     this.result = this.firNum + this.secNum;
+                    // }else if (this.flag == '-') {
+                    //     this.result = this.firNum - this.secNum;
+                    // }else if (this.flag == '*') {
+                    //     this.result = this.firNum * this.secNum;
+                    // }else if (this.flag == '/') {
+                    //     this.result =this.firNum / this.secNum;
+                    // }
+                }
+            }
+        })
+    </script>
+</body>
+</html>

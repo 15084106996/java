@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background: red;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+
+    <script>
+        // onclick
+        // onchange
+        // onmouseover
+        // oncontextmenu 右键
+        document.oncontextmenu = () =>{
+            document.getElementById('box').style.display = 'block';
+            return false;
+        }
+    </script>
+</body>
+</html>

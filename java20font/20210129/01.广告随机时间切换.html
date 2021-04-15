@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        ul,li {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        ul{
+            width: 210px;
+            margin:200px auto;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        li {
+            width: 100px;
+            height: 50px;
+            margin-right: 5px;
+            margin-bottom: 5px;
+            position: relative;
+            overflow: hidden;
+        }
+        div {
+            width: 100%;
+            position: absolute;
+            left:0;
+            top:0;
+            font-size: 0;
+        }
+        img {
+            width: 100px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>
+            <div>
+                <img src="./image/adver01.jpg" alt="">
+                <img src="./image/adver02.jpg" alt="">
+            </div>
+        </li>
+        <li>
+            <div>
+                <img src="./image/adver03.jpg" alt="">
+                <img src="./image/adver04.jpg" alt="">
+            </div>
+        </li>
+        <li>
+            <div>
+                <img src="./image/adver05.jpg" alt="">
+                <img src="./image/adver06.jpg" alt="">
+            </div>
+        </li>
+        <li>
+            <div>
+                <img src="./image/adver07.jpg" alt="">
+                <img src="./image/adver08.jpg" alt="">
+            </div>
+        </li>
+        <li>
+            <div>
+                <img src="./image/adver09.jpg" alt="">
+                <img src="./image/adver10.jpg" alt="">
+            </div>
+        </li>
+        <li>
+            <div>
+                <img src="./image/adver11.jpg" alt="">
+                <img src="./image/adver12.jpg" alt="">
+            </div>
+        </li>
+        <li>
+            <div>
+                <img src="./image/adver13.jpg" alt="">
+                <img src="./image/adver14.jpg" alt="">
+            </div>
+        </li>
+        <li>
+            <div>
+                <img src="./image/adver15.jpg" alt="">
+                <img src="./image/adver16.jpg" alt="">
+            </div>
+        </li>
+    </ul>
+
+    <script src="./js/myjs.js"></script>
+    <script>
+        let aDivs = document.getElementsByTagName('div');
+        for (let oDiv of aDivs) {
+            setInterval(() => {
+                let target = parseInt(getComputedStyle(oDiv)['top']) == 0 ? -50 : 0;
+                doMove(oDiv,'top',10,target);
+            },(Math.random()*3+2)*1000)
+        }
+    </script>
+</body>
+</html>

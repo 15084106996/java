@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <input type="text" id="text">
+    <button id="btn">全选</button>
+    <script>
+        // select() 只能用在存在焦点的元素身上(a 除外)
+        let oText = document.getElementById('text');
+        let oBtn = document.getElementById('btn');
+        oBtn.onclick = () => {
+            oText.select();
+        }
+    </script>
+</body>
+</html>

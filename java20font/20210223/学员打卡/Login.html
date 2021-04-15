@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户登录页</title>
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <style>
+        .loginFrom {
+            width: 400px;
+            padding: 20px;
+            border:1px solid #a7a7a7;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #666;
+            margin:180px auto;
+        }
+        .loginFrom h3{
+            text-align: center;
+            color: #409EFF;
+        }
+        .loginFrom .loginBtn{
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="loginFrom">
+            <h3>系统登录</h3>
+            <el-form :rules="rules" :model="loginFormData" ref="loginForm">
+                <el-form-item prop="username">
+                    <el-input size="small" placeholder="请填写用户名" v-model="loginFormData.username"></el-input>
+                </el-form-item>
+                <el-form-item prop="password">
+                    <el-input size="small" type="password" placeholder="请填写用户密码" v-model="loginFormData.password"></el-input>
+                </el-form-item>
+                <el-form-item>
+                    <el-checkbox v-model="rememberMe"> 记住密码</el-checkbox>
+                </el-form-item>
+                <el-button class="loginBtn" size="small" type="primary" @click="submitLogin">登录</el-button>
+            </el-form>
+        </div>
+    </div>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                userinfos: [// 用户信息
+                    {id:1001,username:'root',password:'123',nickname:'ROOT',gender:false,userType:1},
+                    {id:1002,username:'yin',password:'123',nickname:'牵牛',gender:false,userType:0},
+                    {id:1003,username:'admin',password:'123',nickname:'Admin',gender:false,userType:1},
+                    {id:1004,username:'lucy',password:'123',nickname:'露西',gender:true,userType:0},
+                ],
+                rememberMe : true,// 记住密码
+                loginFormData: {// 表单数据
+                    username : 'root',
+                    password: '123'
+                },
+                rules : {// 表单规则
+                    username : [
+                        {required:true,message:'请填写用户名称',trigger:'blur'}
+                    ],
+                    password : [
+                        {required:true,message:'请填写用户密码',trigger:'blur'}
+                    ]
+                }
+            },
+            methods:{
+                submitLogin() {// 验证用户登录
+                    this.$refs['loginForm'].validate((valid) => {
+                        if (valid) {
+                            // 验证登录 loginFormData -- userinfos
+                            let bool = true;
+                            this.userinfos.forEach((item,index) => {
+                                if (item.username == this.loginFormData.username && item.password == this.loginFormData.password) {
+                                    // 可以登录
+                                    item.password = null;
+                                    window.sessionStorage.setItem('loginUser', JSON.stringify(item));
+                                    window.location.href = './Index.html';
+                                    bool = false;
+                                }
+                            })
+                            if (bool) {
+                                this.$message.error('请重新确认用户名及密码');
+                            }
+                        } else {
+                            this.$message.warning('请正确填写用户名及密码');
+                            return false;
+                        }
+                    });
+                }
+            }
+        })
+    </script>
+</body>
+</html>

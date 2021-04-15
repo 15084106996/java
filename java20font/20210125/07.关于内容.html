@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box {
+            width: 300px;
+            height: 200px;
+            background: #a5c86e;
+            margin: 10px 0;
+        }
+
+    </style>
+</head>
+<body>
+    <input id="content" type="text">
+    <button onclick="send()">发送</button>
+    <div id="box"></div>
+
+    <script>
+        let oContent = document.getElementById('content');
+        let oBox = document.getElementById('box');
+        // innerHTML ：当作html解析
+        // innerText : 以文本显示
+        let send = () => {
+            oBox.innerHTML = oBox.innerHTML + `<div>${oContent.value}</div>`;
+            oContent.value = "";
+        };
+        // let year = 2021;
+        // let str = "今年是" + year + "年，疫情比较严重";
+        // let str1 = `今年是${year}年，疫情比较严重`;
+        // console.log(str1)
+    </script>
+</body>
+</html>

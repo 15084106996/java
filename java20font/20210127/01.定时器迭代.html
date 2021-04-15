@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            background: url('./image/1.jpg');
+        }
+    </style>
+</head>
+<body>
+    <button>走你</button>
+    <script>
+        let arrImg = ['./image/1.jpg','./image/2.jpg','./image/3.jpg','./image/4.jpg'];
+        let oBtn = document.getElementsByTagName('button')[0];
+        let index = 0;
+        let timer = null;
+        oBtn.onclick = () => {
+            clearInterval(timer);
+            timer = setInterval(() => {
+                index++;
+                if (index >= arrImg.length) {
+                    index = 0;
+                }
+                document.body.style.background = `url(${arrImg[index]})`
+            },1000)
+        }
+    </script>
+</body>
+</html>

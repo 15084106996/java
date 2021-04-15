@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        ul{
+            padding:0;
+            list-style: none;
+            width: 250px;
+            border:1px solid #e8e8e8;
+        }
+        li{
+            line-height: 26px;
+            border-bottom:1px solid #e8e8e8;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <ul id="list">
+        <li>
+            <input type="checkbox" class="songs">
+            As long as you love me
+        </li>
+        <li>
+            <input type="checkbox" class="songs">
+            I Believe
+        </li>
+        <li>
+            <input type="checkbox" class="songs">
+            年少有为
+        </li>
+        <li>
+            <input type="checkbox" class="songs">
+            双截棍
+        </li>
+        <li>
+            <input type="checkbox" class="songs">
+            精武门
+        </li>
+        <li>
+            <input type="checkbox" class="allSelect">
+            全选
+        </li>
+    </ul>
+
+    <script>
+        let oList = document.getElementById('list');
+        let aInp = oList.getElementsByClassName('songs');
+        let oSel = oList.getElementsByClassName('allSelect')[0];
+
+        // 给 所有 song 添加 onchange事件
+        for (let oInp of aInp) {
+            oInp.onchange = () => {
+                let re = checkOptions();
+                if (re == 500) {
+                    oSel.checked = false;
+                }else {
+                    oSel.checked = true;
+                }
+            }
+        }
+
+        oSel.onchange = () => {
+            if (oSel.checked) {
+                allSelectOptions(1);
+            }else{
+                allSelectOptions(2);
+            }
+        }
+
+        let allSelectOptions = (num) => {
+            let bool = true;
+            if (num == 2) {
+                bool = false;
+            }
+            for (let oInp of aInp) {
+                oInp.checked = bool;
+            }
+        }
+
+        let checkOptions = () => {
+            for (let oInp of aInp) {
+                if (!oInp.checked) {
+                    return 500;
+                }
+            }
+            return 200;
+        }
+
+    </script>
+</body>
+</html>
